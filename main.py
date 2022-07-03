@@ -15,6 +15,7 @@ def getPeople():
     return jsonify(users)
 
 # UIDs should be auto-generated, usually done by database with some sort of AUTO_INCREMENT
+# Bash script automatically sets every uid to -1 for now, until I get database set up
 @app.route('/users', methods=['POST'])
 def setPerson():
     users.append(request.get_json())

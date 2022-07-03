@@ -2,6 +2,7 @@
 
 USER_FNAME_KEY="firstName"
 USER_LNAME_KEY="lastName"
+COLOR_KEY="favoriteColor"
 
 while : ;
 do
@@ -16,16 +17,16 @@ do
   fi
 
   if [ $userIn == 1 ]; then
-    echo "Enter a first name then a last name, in that order."
-    read firstName lastName
-    if [ -z "$firstName" ] || [ -z "$lastName" ]; then
-      echo "Both a first name and last name must be provided, separated by a space. Try again!"
+    echo "Enter a first name, a last name, then a color in that order."
+    read firstName lastName favColor
+    if [ -z "$firstName" ] || [ -z "$lastName" ] || [ -z "$favColor" ]; then
+      echo "A first name, last name, and color must be provided, separated by spaces. Try again!"
       continue
     else
-      echo "Adding $firstName $lastName to the database!"
-      echo "Run the corresponding 'Get All' command to see the updated collection"
       curl -X POST -H "Content-Type: application/json" -d \
-      "{\"${USER_FNAME_KEY}\" : \"${firstName}\", \"${USER_LNAME_KEY}\": \"${lastName}\"}"  http://localhost:5000/users
+      "{\"${USER_FNAME_KEY}\": \"${firstName}\", \"${USER_LNAME_KEY}\": \"${lastName}\", "\
+"\"${COLOR_KEY}\": \"${favColor}\", \"uid\": -1}" http://localhost:5000/users
+      echo "Run the corresponding 'Get All' command to see if the collection updated!"
     fi
   elif [ $userIn == 2 ]; then
     echo "Getting all user entries..."
