@@ -3,17 +3,18 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-# Sample data
+# Sample starting data
 users = [
-    {'firstName': 'Andy', 'lastName': 'Wu'},
-    {'firstName': 'April', 'lastName': 'May'},
-    {'firstName': 'Crystal', 'lastName': 'Waters'}
+    {'uid': 1, 'favoriteColor': 'red', 'firstName': 'Andy', 'lastName': 'Wu'},
+    {'uid': 2, 'favoriteColor': 'yellow', 'firstName': 'April', 'lastName': 'May'},
+    {'uid': 3, 'favoriteColor': 'blue', 'firstName': 'Crystal', 'lastName': 'Waters'}
 ]
 
 @app.route('/users', methods=['GET'])
 def getPeople():
     return jsonify(users)
 
+# UIDs should be auto-generated, usually done by database with some sort of AUTO_INCREMENT
 @app.route('/users', methods=['POST'])
 def setPerson():
     users.append(request.get_json())
