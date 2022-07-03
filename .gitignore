@@ -1,0 +1,8 @@
+
+*.pyc
+
+# Mac
+*.DS_Store
+
+# Intellij PyCharm
+*.idea/
