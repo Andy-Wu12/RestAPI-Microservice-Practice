@@ -25,7 +25,7 @@ do
     else
       curl -X POST -H "Content-Type: application/json" -d \
       "{\"${USER_FNAME_KEY}\": \"${firstName}\", \"${USER_LNAME_KEY}\": \"${lastName}\", "\
-"\"${COLOR_KEY}\": \"${favColor}\", \"uid\": -1}" http://localhost:5000/users
+"\"${COLOR_KEY}\": \"${favColor}\"}" http://localhost:5000/users
       echo "Run the corresponding 'Get All' command to see if the collection updated!"
     fi
   elif [ $userIn == 2 ]; then
