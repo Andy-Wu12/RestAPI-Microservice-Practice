@@ -1,4 +1,4 @@
-#Flask Rest API Practice <br/>
+# Flask Rest API Practice <br/>
 **This repository will show my work during my time learning to write REST APIs.**
 
 To run this project, you either need to have MongoDB (and preferably Compass) installed and setup 
@@ -13,7 +13,11 @@ For this project, you will simply need two python modules, both of which we can 
 I use a virtual environment for this project, but you don't need to.
 If you would like to set one up or just learn more about it, refer to [this documentation](https://docs.python.org/3/library/venv.html)
 
-####Once you have the project downloaded, follow these steps to get started
+#### You can install the necessary packages with by running the following commands:
+1. pip3 install flask
+2. pip3 install pymongo
+
+#### Once you have the project downloaded, follow these steps to get started
 
 1. cd into the project folder
 2. Run the command _python3 server.py_ in your terminal. 
