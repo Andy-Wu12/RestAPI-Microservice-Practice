@@ -1,6 +1,6 @@
 import json
 import pymongo
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, abort
 from bson import ObjectId
 
 app = Flask(__name__)
@@ -32,6 +32,16 @@ def getPeople():
         data.append(doc)
 
     return jsonify(data)
+
+@app.route('/users/<int:uid>', methods=['GET'])
+def getPerson(uid):
+    user_data = db.users.find_one({"uid": uid})
+
+    if user_data:
+        user_data['_id'] = str(user_data['_id'])
+        return jsonify(user_data)
+
+    return jsonify({'Error': 'No user with that id was found!'})
 
 @app.route('/users', methods=['POST'])
 def addPerson():
