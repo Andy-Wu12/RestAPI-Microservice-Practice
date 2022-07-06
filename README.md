@@ -9,11 +9,11 @@ for this project.
 [Download MongoDB Community Server](https://www.mongodb.com/try/download/community) <br/>
 [Use MongoDB Atlas](https://www.mongodb.com/atlas/database)
 
-For this project, you will simply need two python modules, both of which we can install with pip.
+For this project, you will need two python modules, both of which we can install with pip.
 I use a virtual environment for this project, but you don't need to.
 If you would like to set one up or just learn more about it, refer to [this documentation](https://docs.python.org/3/library/venv.html)
 
-#### You can install the necessary packages with by running the following commands:
+#### You can install the necessary packages by running the following commands:
 1. pip3 install flask
 2. pip3 install pymongo
 
