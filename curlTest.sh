@@ -8,7 +8,11 @@ while : ;
 do
   echo "1 - Add new user entry"
   echo "2 - Get all user entries"
-  echo "3 - Exit program"
+  echo "3 - Get single user by id"
+  echo "4 - Update user by id"
+
+  echo ""
+  echo "9 - Exit program"
 
   read -p "Please choose one of the options above by entering it's corresponding number: " userIn
 
@@ -32,6 +36,15 @@ do
     echo "Getting all user entries..."
     echo "$(curl http://localhost:5000/users)"
   elif [ $userIn == 3 ]; then
+    echo "Enter the uid of the user you are looking for."
+    read uid
+    if [ -z $uid ]; then
+      echo "Need to provide a value!"
+      continue
+    else
+      echo "$(curl http://localhost:5000/users/$uid)"
+    fi
+  elif [ $userIn == 9 ]; then
     echo "Exiting..."
     exit 0
   else

@@ -1,11 +1,11 @@
-import json
 import pymongo
 from flask import Flask, jsonify, request, abort
 from bson import ObjectId
 
 app = Flask(__name__)
 
-# Local mongodb connection
+# Local mongodb connection. If you are using atlas, just replace the parameters here with your URI string.
+# A better alternative is to set up your URI string in a .env file and using the dotenv module to access it at runtime.
 client = pymongo.MongoClient('localhost', 27017)
 db = client.flask_rest_project
 
