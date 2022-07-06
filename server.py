@@ -11,8 +11,15 @@ db = client.flask_rest_project
 @app.route('/users', methods=['GET'])
 def getPeople():
     user_collection = db.users
-    docs_cursor = user_collection.find()
     data = []
+
+    # Get all query parameters.
+    # Currently only handles filtering by fields separated by &
+    query_dict = {}
+    for param, value in request.args.items():
+        query_dict[param] = value
+
+    docs_cursor = user_collection.find(query_dict)
 
     # Convert oid to string to allow for jsonify to work properly
     for doc in docs_cursor:
@@ -21,12 +28,11 @@ def getPeople():
 
     return jsonify(data)
 
-
 # UIDs should be auto-generated, usually done by database with some sort of AUTO_INCREMENT
 # Bash script automatically sets every uid to -1 for now, until I get database set up
 @app.route('/users', methods=['POST'])
 def setPerson():
-    db.users.insert(request.get_json())
+    db.users.insert_one(request.get_json())
     return '', 204
 
 if __name__ == "__main__":
